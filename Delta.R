@@ -2,12 +2,10 @@
 ##This function calculates optimal K using the method described by evanno et al. 2005
 #Requires a log probability file with two columns, V1 being the value of K, 
 #and V2 being the LnProb given by STRUCTURE
+## Not run: Delta_K(x)
+
 library(dplyr)
 library(ggplot2)
-
-x<- read.table("/Users/dj/CLUMPAK_data/Other/Log_Prob2.txt")
-y<- read.table("/Users/dj/CLUMPAK_data/Other/Log_Prob_same.txt")
-Delta_K(x)
 
 Delta_K<- function(x) {
   T2<- x %>% group_by(V1) %>% summarise(St_dev= sd(V2), mean=mean(V2))
@@ -33,8 +31,8 @@ Delta_K<- function(x) {
     geom_point(col="#6347FF")+
     geom_line(col="#6347FF")+
     theme_bw()+
-    labs(title = expression(paste(italic("Silphium albiflorum"), " SNP Genotyping")), 
-         subtitle = expression(paste("Optimal Number of Clusters [",Delta,"K=m(","|","L''K","|",")","/",sigma,"L(K)]")), 
+    labs(title = "Optimal Number of Clusters", 
+         subtitle = expression(paste(Delta,"K=m(","|","L''K","|",")","/",sigma,"L(K)]")), 
          y= expression(paste(Delta, "K")), 
          x="K")+
     scale_x_continuous(breaks = seq(1,length(T2$delta_k)))
