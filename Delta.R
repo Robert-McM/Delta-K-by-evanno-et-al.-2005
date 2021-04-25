@@ -14,7 +14,7 @@ Delta_K<- function(x) {
   T2<- T2[-3]
   T2<- cbind(T2,T3)
   names(T2)[3]<- "mean"
-  T2<- T2 %>% mutate(LK1=0, LK2=0)
+  T2<- T2 %>% mutate(LK1=NA, LK2=NA)
   
   for (i in 2:length(T2$V1)){
     T2$LK1[i]<- T2$mean[i]-T2$mean[i-1]
