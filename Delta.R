@@ -32,7 +32,7 @@ Delta_K<- function(x) {
     geom_line(col="#6347FF")+
     theme_bw()+
     labs(title = "Optimal Number of Clusters", 
-         subtitle = expression(paste(Delta,"K=m(","|","L''K","|",")","/",sigma,"L(K)]")), 
+         subtitle = expression(paste(Delta,"K=m(","|","L''K","|",")","/",sigma,"L(K)")), 
          y= expression(paste(Delta, "K")), 
          x="K")+
     scale_x_continuous(breaks = seq(1,length(T2$delta_k)))
